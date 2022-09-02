@@ -57,18 +57,17 @@ having count(case when gender='M' then 1 end)>count(case when gender='F' then 1 
 - Their weight would be between 60kg and 80kg
 - Their patient_id is an odd number
 - They are from the city 'Halifax'*/
-select *
-from patients
+select * from patients
 where first_name like '__r%' and gender='F' and month(birth_date) in (2,5,12) and weight between 60 and 80 and patient_id%2<>0 and city='Halifax';
 
 
 --Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
-select concat(
-    round(
-        (select count(*) from patients where gender='M')/cast(count(*) as float)
+select 
+    concat(
+        round(
+            (select count(*) from patients where gender='M')/cast(count(*) as float)
         ,4)
-    *100
-,%) as percent_of_male_patients
+    *100,%) as percent_of_male_patients
 from patients;
 
 
