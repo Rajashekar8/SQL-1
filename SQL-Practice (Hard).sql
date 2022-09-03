@@ -14,7 +14,7 @@ select patient_id
 from patients;
 
 
---Show patient_id, first_name, last_name, and attending physician's specialty. Show only the patients who has a primary_diagnosis as 'Dementia' and the physician's first name is 'Lisa'
+--Show patient_id, first_name, last_name, and attending physician's specialty. Show only the patients who has a primary_diagnosis as 'Dementia' and the physician's first name is 'Lisa'.
 select a.patient_id
 ,p.first_name as patient_first_name
 ,p.last_name as patient_last_name
@@ -51,7 +51,7 @@ having count(case when gender='M' then 1 end)>count(case when gender='F' then 1 
 
 
 /*We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
-- First_name contains an 'r' after the first two letters.
+- First_name contains an 'r' after the first two letters
 - Identifies their gender as 'F'
 - Born in February, May, or December
 - Their weight would be between 60kg and 80kg
