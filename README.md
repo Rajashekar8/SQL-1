@@ -1,6 +1,6 @@
 # SQL
 
-Hello! This is my collection of SQL practice queries. 
+Hello! This is my collection of SQL queries. 
 
 From www.sql-practice.com:
 1.  sql-practice.com Answers (Easy)
