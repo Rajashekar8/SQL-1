@@ -20,7 +20,7 @@ select a.patient_id
 ,p.last_name as patient_last_name
 ,ph.specialty as attending_physician_specialty
 from admissions a
-join patients p on a.patient_id=p.patient_id
+join patients p on using(patient_id)
 join physicians ph on a.attending_physician_id=ph.physician_id
 where a.primary_diagnosis='Dementia' and ph.first_name='Lisa';
 
@@ -33,7 +33,7 @@ The password must be the following, in order:
 select distinct(a.patient_id)
 ,concat(distinct(p.patient_id),len(p.last_name),year(p.birth_date)) as temp_password
 from patients p
-join admissions a on a.patient_id=p.patient_id;
+join admissions a on using(patient_id);
 
 
 --Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance. Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have insurance. Add up the admission_total cost for each has_insurance group.
@@ -44,8 +44,8 @@ group by has_insurance;
 
 
 --Show the provinces that has more patients identified as 'M' than 'F'.
-select p.province_name from patients a 
-join provinces p on a.province_id=p.province_id
+select province_name from provinces 
+join pattients on using(province_id)
 group by province_name
 having count(case when gender='M' then 1 end)>count(case when gender='F' then 1 end);
 
