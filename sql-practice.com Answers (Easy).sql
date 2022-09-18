@@ -42,7 +42,7 @@ select a.first_name
 ,a.last_name
 ,r.province_name
 from patients a
-join provinces r on a.province_id=r.province_id;
+join provinces r on using(province_id);
 
 
 --Show how many patients have a birth_date with 2010 as the birth year.
