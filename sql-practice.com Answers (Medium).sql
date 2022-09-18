@@ -19,11 +19,12 @@ where first_name like 'S____%s';
 
 
 --Show patient_id, first_name, last_name from patients whos primary_diagnosis is 'Dementia'.
-Select p.patient_id
-,p.first_name
-,p.last_name
-from patients p
-join admissions a on p.patient_id=a.patient_id where primary_diagnosis='Dementia';
+Select patient_id
+,first_name
+,last_name
+from patients 
+join admissions using(patient_id) 
+where primary_diagnosis='Dementia';
 
 
 --Display every patient's first_name. Order the list by the length of each name and then by alphbetically.
